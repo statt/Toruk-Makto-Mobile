@@ -1,8 +1,6 @@
 <?php
 /*
- * Created on 2012. 5. 14.
- *
- * To change the template for this generated file go to
- * Window - Preferences - PHPeclipse - PHP - Code Templates
+ *  2012-05-14 
+ *	uuid, timestamp, signature	/	token
  */
 ?>

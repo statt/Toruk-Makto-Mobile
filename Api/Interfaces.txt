@@ -21,7 +21,7 @@ cancelMaum		보내고 있는 마음 취소하기	token, uuid, mcode
 hideMaum		매칭된 마음 그만보기		token, uuid, mcode
 
 사용방법 예 :
-http://localhost:8080/Api/register.php에 POST방식으로
+http://localhost/Api/register.php에 POST방식으로
 uuid, phoneNum, nums[]를 넘겨주면
 결과코드와 appKey가 json형식으로 반환됨( {code:1, appkey:"1234567890"} )
 
@@ -175,7 +175,7 @@ hideMaum
 	0	: Argument가 제대로 전달되지 않음
 	1	: 성공(에러아님)
 	인증
-	101 : 앱 고유번호가 서버에 존재하지 않는다(register가 안되어있는 uuid)
+	101 : uuid가 서버에 존재하지 않는다(register가 안되어있거나 초기화됨)
 	102 : 인증토큰이 유효하지 않음
 	103 : timestamp의 유효기간이 초과됨 
 	친구
@@ -189,4 +189,7 @@ hideMaum
 	501 : 한사람에게 보낼 수 있는 최대 마음갯수가 제한되어 더이상 마음을 보낼 수 없음
 	502 : 이미 등록되어있는 마음임
 	System
-	601 : MySql 에러
+	601 : 시스템 점검중
+	602 : MySQL 연결 실패
+	603 : DB 연결 실패
+	604 : 쿼리 실행 실패
