@@ -33,10 +33,10 @@ if($debug_mode){
 $appKey = $HTTP_COOKIE_VARS["PHPSESSID"];
 
 $result = db_query("SELECT * FROM user WHERE phoneNum='".$phoneNum."'")
-db_query("INSERT INTO user(uuid, phoneNum, appKey, name, image, imageTs, message, lon, lat, maxMaum, cntMaum, itm1, itm2, itm3) " .
-		"VALUES()"
-		);
+//db_query("INSERT INTO user(uuid, phoneNum, appKey, name, image, imageTs, message, lon, lat, maxMaum, cntMaum, itm1, itm2, itm3) " .
+//		"VALUES()"
+//		);
 
 
-echo $appKey;
+//echo $appKey;
 ?>
