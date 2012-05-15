@@ -36,7 +36,7 @@ function raise_error( $message ){
 $link = mysql_connect($db_hostname, $db_username, $db_pw);
 if(mysql_errno()){
 	raise_error(mysql_errno() . " : " . htmlspecialchars(mysql_error()));
-	echo "602";
+	echo "{code:602,message:'" . mysql_error() . "'}";
 }
 $select = mysql_select_db("dittoapi", $link);
 
@@ -48,12 +48,13 @@ function db_query( $query ){
 	// Check result
 	// This shows the actual query sent to MySQL, and the error. Useful for debugging.
   	if (!$result) {
+  		
   		if($debug_mode){
       		$message  = '<b>Invalid query:</b><br>' . mysql_error() . '<br><br>';
       		$message .= '<b>Whole query:</b><br>' . $query . '<br><br>';
       		die("602");
     	}
-
+		echo "{code:602, message: '" . mysql_error() . "'}";
    		raise_error('db_query_error: ' . $message);
  	}
 	return $result;

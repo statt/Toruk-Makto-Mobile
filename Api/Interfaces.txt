@@ -5,8 +5,8 @@ Request Method : POST
 API목록 :
 API명			설명					request변수						response변수
 -----------------------------------------------------------------------------------------------
-register		사용자등록				uuid, phoneNum, nums[]		/	appkey
-login			로그인				uuid, timestamp, signature	/	token
+register		사용자등록				uuid, name, phoneNum, nums[]		/	appkey
+login			로그인				uuid, timestamp, signature, lon, lat	/	token
 friendList		친구목록				token						/	{uuid, name, imageTs, message}
 aroundList		주변사람목록			token, lon, lat				/	{uuid, name}
 addFriendByUuid	uuid로 친구추가			token, uuid					/	uuid, name, message
@@ -35,6 +35,7 @@ register
 	request :
 		uuid		#앱고유번호	(UUID, http://huewu.blog.me/110107222113 참조. 사용자ID와 같은 역할)
 		phoneNum	#국가코드+전화번호 (전화번호 없는 기기는 그냥 빈 문자열)
+		name		#사용자 이름 : 12.5.15 추가됨
 		nums[]		#주소록에 저장되어있는 사람들의 국가코드+전화번호 리스트
 	response :
 		appKey		#인증키값
@@ -46,7 +47,7 @@ login
 		timestamp	#현재시간	(현재 2009-02-14 08:31:30일 경우 : =1228548141)
 		signature	#서명		(=SHA512(timestamp + uuid + appKey)
 		lon			#현재위치 경도(Longitude) : 12.5.15 추가됨
-		lat			#최근위치 위도(Latitude) : 12.5.15 추가됨
+		lat			#현재위치 위도(Latitude) : 12.5.15 추가됨
 	response :
 		token		#인증토큰
 =================================================
