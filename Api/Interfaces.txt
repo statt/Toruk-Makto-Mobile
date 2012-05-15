@@ -45,6 +45,8 @@ login
 		uuid		#앱고유번호
 		timestamp	#현재시간	(현재 2009-02-14 08:31:30일 경우 : =1228548141)
 		signature	#서명		(=SHA512(timestamp + uuid + appKey)
+		lon			#현재위치 경도(Longitude) : 12.5.15 추가됨
+		lat			#최근위치 위도(Latitude) : 12.5.15 추가됨
 	response :
 		token		#인증토큰
 =================================================

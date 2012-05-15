@@ -1,0 +1,56 @@
+DB Schema Description
+MySQL, UTF-8
+문서버전 : 0.0.2c
+
+
+
+사용자명 : ditto
+DB명 : dittoapi
+암호 : dir/w-2
+테이블
+
+=================================================
+user
+#사용자 정보 저장
+	uuid(PK)	#앱고유번호
+	phoneNum(UNIQUE)	#전화번호
+	appKey		#인증키값(로그인 유효성 검사에 쓰임)
+	name		#사용자이름
+	image		#프로필사진
+	imageTs		#프로필사진 마지막으로 변경된 시간	(2009-02-14 08:31:30일 경우 : =1228548141)
+	message		#남김말
+	lon			#최근위치 경도(Longitude)
+	lat			#최근위치 위도(Latitude)
+	maxMaum		#친구 1명에게 보낼 수 있는 마음 최대 갯수
+	cntMaum		#친구들에게 받고 있는 마음의 갯수
+	itm1		#지연알림 아이템 남은 갯수
+	itm2		#나에게만 알리기 아이템 남은 갯수
+	itm3		#70%의진실 아이템 남은 갯수
+	
+	업데이트 또는 재설치시 사용자 정보는 계속 유지되므로 마음은 계속 보내고 있게 됨
+	따라서 uuid와 phoneNum이 틀어질 때마다 사용자 정보를 삭제 (참조테이블은 set null시킴)
+	단, 매칭 결과는 uuid가 없어져도 이름값이랑 전부 보존시킴.
+=================================================
+friend
+#친구사이 정보 저장
+	uuid(FK)	#본인의 uuid
+	fid(FK)		#친구의 uuid
+=================================================
+maum
+#마음 매칭 정보 저장
+	uuidA(FK)	#알파벳 오름차순에서 낮은쪽 uuid
+	nameA		#uuidA의 이름
+	uuidB(FK)	#알파벳 오름차순에서 높은쪽 uuid
+	nameB		#uuidB의 이름
+	mcode		#마음코드
+	mstring		#마음문자열(mcode가 800, 즉 사용자 정의 문자열일때 사용)
+	AtoB		#uuidA가 uuidB를 지정했는가? (True/False)
+	BtoA		#uuidB가 uuidA지정했는가? (True/False)
+	itemA		#A가 사용한 아이템(0-없음, 1-지연알림, 2-나에게만알림)
+	itemB		#B가 사용한 아이템
+	delay		#지연알림 시간(A가 입력한 지연알림 + B가 입력한 지연알림)
+	dateA		#uuidA가 마음을 입력한 날짜
+	dateB		#uuidB가 마음을 입력한 날짜
+	dateInf		#매칭된 사실을 통지해 줄 날짜(dateA, dateB중 나중날짜 + delay)
+	hideA		#A가 그만보기 옵션을 사용함 (True/False)
+	hideB		#B가 그만보기 옵션을 사용함 (True/False)
