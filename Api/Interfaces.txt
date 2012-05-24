@@ -14,7 +14,7 @@ addFriendByNum	전화번호로 친구추가		token, phoneNum				/	uuid, name, message
 modifyProfile	프로필 변경				token, name, message, imgFlag, image
 receivingMaum	받고있는 마음목록			token		/	count, {uuid, mcode, mstring, sndDate, rcvDate}
 sendingMaum		보내고 있는 마음목록		token		/	{uuid, mcode, mstring, sndDate, itmString}
-sendMaum		마음보내기				token, mcode, mstring, item, delay
+sendMaum		마음보내기				token, uuid, mcode, mstring, item, delay
 useItem0		70%의진실 아이템 사용하기	token, uuid					/	remain, uuid, mcode
 useItem1		마음확장 아이템 사용하기	token						/	count
 cancelMaum		보내고 있는 마음 취소하기	token, uuid, mcode
@@ -45,7 +45,7 @@ login
 	request :
 		uuid		#앱고유번호
 		timestamp	#현재시간	(현재 2009-02-14 08:31:30일 경우 : =1228548141)
-		signature	#서명		(=SHA512(timestamp + uuid + appKey)
+		signature	#서명		(=SHA1(timestamp + uuid + appKey)
 		lon			#현재위치 경도(Longitude) : 12.5.15 추가됨
 		lat			#현재위치 위도(Latitude) : 12.5.15 추가됨
 	response :
@@ -134,6 +134,7 @@ sendMaum
 # 마음 보내기
 	request :
 		token		#인증토큰
+		uuid		#상대방uuid
 		mcode		#마음코드
 		mstring		#마음문자열(마음코드가 800일 때, 즉 사용자정의 문자열 일때만 사용)
 		item		#아이템 번호(0-사용안함, 1-지연알림, 2-나에게만알림)
@@ -180,7 +181,10 @@ hideMaum
 	인증
 	101 : uuid가 서버에 존재하지 않는다(register가 안되어있거나 초기화됨)
 	102 : 인증토큰이 유효하지 않음
-	103 : timestamp의 유효기간이 초과됨 
+	103 : timestamp의 유효기간이 초과됨
+	104 : signature가 유효하지 않음
+	105 : session 등록 실패 
+	106 : session이 유효하지 않음
 	친구
 	201 : 해당 uuid를 사용하는 사용자가 없음
 	202 : 해당 전화번호를 사용하는 사용자가 없음
@@ -196,3 +200,4 @@ hideMaum
 	602 : MySQL 연결 실패
 	603 : DB 연결 실패
 	604 : 쿼리 실행 실패
+	605 : 파일 저장 실패

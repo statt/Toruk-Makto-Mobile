@@ -16,7 +16,6 @@ user
 	phoneNum(UNIQUE)	#전화번호
 	appKey		#인증키값(로그인 유효성 검사에 쓰임)
 	name		#사용자이름
-	image		#프로필사진
 	imageTs		#프로필사진 마지막으로 변경된 시간	(2009-02-14 08:31:30일 경우 : =1228548141)
 	message		#남김말
 	lon			#최근위치 경도(Longitude)

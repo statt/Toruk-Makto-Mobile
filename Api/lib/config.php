@@ -3,7 +3,10 @@
  * Created on 2012. 5. 15.
  *
  */
- 
+
+//echo "{code:601, message:'시스템 점검 중입니다.'}";
+//return;
+
 // MySQL Config
 $db_hostname	= 'localhost';
 $db_username	= 'ditto';
