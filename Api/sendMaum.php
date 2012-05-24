@@ -75,6 +75,28 @@ if(mysql_num_rows($result)>0){
 	db_query($query);
 }else{
 	// 새로운 마음을 insert!
-	db_query("INSERT INTO maum");
+	$result = db_query("SELECT uname FROM user WHERE uuid='".$fid."'");
+	$row = mysql_fetch_array($result);
+	$fname = $row[0];
+	
+	$result = db_query("SELECT uname FROM user WHERE uuid='".$uuid."'");
+	$row = mysql_fetch_array($result);
+	$uname = $row[0];
+	
+	$query = "INSERT INTO maum VALUES(";
+	if($uuid<$fid){
+		$query .= "'".$uuid."', '".$uname."', '".$fid."', '".$fname."'";
+	}else{
+		$query .= "'".$fid."', '".$fname."', '".$uuid."', '".$uname."'";
+	}
+	$query .= ", '".$mcode."', '".$mstring."'";
+	if($uuid<$fid){	// AtoB, BtoA
+		$query .= ", true, false, ".$item.", 0, ";
+	}else{
+		$query .= ", false, true, 0, ".$item.", ";
+	}
+	$query .=$delay.", ,,,false, false)";
+	$result = db_query($query);
 }
+echo "{code:1}";
 ?>

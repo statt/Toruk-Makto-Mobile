@@ -19,4 +19,5 @@ $debug_mode				= true;
 $system_operator_mail 	= 'roland.blain@gmail.com';
 $system_from_mail 		= 'info@ditto.com';
 
+$maum_max		= 21;		// 마음코드 최대값(0~MAUM_MAX) : 랜
 ?>
