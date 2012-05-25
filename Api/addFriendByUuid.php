@@ -9,9 +9,6 @@ addFriendByUuid
 		token		#인증토큰
 		uuid		#친구앱고유번호
 	response :
-		uuid		#친구앱고유번호
-		name		#이름
-		message		#남김말
 =================================================
  */
  
@@ -36,8 +33,13 @@ if(!$uuid){
 	return;
 }
 
-db_query("INSERT INTO friend(uuid, fid) VALUES('".$uuid."','".$fid."')");
-$result = ("SELECT name, message FROM user WHERE uuid='".$fid."'");
-$row = mysql_fetch_row($result);
-echo "{code:1,uuid:\"".$fid."\",name:\"".$row[0]."\",message:\"".$row[1]."\"}";
+if($fid!=null && $fid!=""){
+	//$result = ("SELECT name, message FROM user WHERE uuid='".$fid."'");
+	//$row = mysql_fetch_row($result);
+	//echo "{code:1,uuid:\"".$fid."\",name:\"".$row[0]."\",message:\"".$row[1]."\"}";
+	db_query("INSERT INTO friend(uuid, fid) VALUES('".$uuid."','".$fid."')");
+	echo "{code:1}";
+}else{
+	echo "{code:0}";
+}
 ?>

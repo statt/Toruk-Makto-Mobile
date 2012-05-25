@@ -9,7 +9,6 @@ register
 		uuid		#앱고유번호	(UUID, http://huewu.blog.me/110107222113 참조. 사용자ID와 같은 역할)
 		phoneNum	#국가코드+전화번호 (전화번호 없는 기기는 그냥 빈 문자열)
 		name		#사용자 이름(스마트폰에 저장된 값 사용)
-		nums[]		#주소록에 저장되어있는 사람들의 국가코드+전화번호 리스트
 // 추후 signature 기능을 추가하여
 // register 콜로 임의의 사용자 정보를 삭제하는 공격을 방어해야 함 ***************
 	response :
@@ -29,15 +28,13 @@ include 'lib/common.php';
 if($debug_mode){
 	// allow GET method
 	$uuid = $_REQUEST["uuid"];
-	$name = $_REQUEST["name"];
 	$phoneNum = $_REQUEST["phoneNum"];
-	$nums = $_REQUEST["nums"];
+	$name = $_REQUEST["name"];
 }else{
 	// do not allow GET method
 	$uuid = $_POST["uuid"];
-	$name = $_POST["name"];
 	$phoneNum = $_POST["phoneNum"];
-	$nums = $_POST["nums"];
+	$name = $_POST["name"];
 	if(!$uuid){
 		raise_error(0, "앱 고유번호가 null입니다.");
 		return;
@@ -84,20 +81,6 @@ if($phoneNum){
 db_query("INSERT INTO user(uuid, phoneNum, appKey, name, message, maxMaum, cntMaum, itm1, itm2, itm3) " .
 	"VALUES('".$uuid."', '".$phoneNum."', '".$appKey."', '".$name."', '', 3, 0, 0, 0, 0)");
 
-
-// 번호목록으로부터 친구목록을 생성함
-$query = "SELECT uuid FROM user WHERE";
-if($nums!=null){
-	foreach($nums as $value){
-		$query = $query." phoneNum='".$value."' OR";
-	}
-	$query=$query." 1=0";
-	$result = db_query($query);
-	$query = "INSERT INTO friend(uuid, fid) VALUES('".$uuid."', '";
-	while($fid = mysql_fetch_row($result)){
-		db_query($query . $fid[0]."')");
-	}
-}
 
 // 반환값 출력
 echo "{code:1, appKey:'".$appKey."'}";
