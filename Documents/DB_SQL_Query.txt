@@ -1,0 +1,105 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.3
+-- http://www.phpmyadmin.net
+--
+-- 호스트: localhost
+-- 처리한 시간: 12-05-25 15:35 
+-- 서버 버전: 5.1.41
+-- PHP 버전: 5.2.12
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- 데이터베이스: `dittoapi`
+--
+CREATE DATABASE `dittoapi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `dittoapi`;
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `friend`
+--
+
+CREATE TABLE IF NOT EXISTS `friend` (
+  `uuid` varchar(64) NOT NULL,
+  `fid` varchar(64) DEFAULT NULL,
+  KEY `uuid` (`uuid`),
+  KEY `fid` (`fid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 테이블의 덤프 데이터 `friend`
+--
+
+INSERT INTO `friend` (`uuid`, `fid`) VALUES
+('asdlkfj', 'lsdkfjsldfg'),
+('zzlkfj', 'lsdkfjsldfg');
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `maum`
+--
+
+CREATE TABLE IF NOT EXISTS `maum` (
+  `uuidA` varchar(64) DEFAULT NULL,
+  `nameA` varchar(16) NOT NULL,
+  `uuidB` varchar(64) DEFAULT NULL,
+  `nameB` varchar(16) NOT NULL,
+  `mcode` int(11) NOT NULL,
+  `mstring` varchar(32) NOT NULL,
+  `AtoB` tinyint(1) NOT NULL,
+  `BtoA` tinyint(1) NOT NULL,
+  `itemA` int(11) NOT NULL,
+  `itemB` int(11) NOT NULL,
+  `delay` int(11) NOT NULL,
+  `dateA` datetime NOT NULL,
+  `dateB` datetime NOT NULL,
+  `dateInf` datetime NOT NULL,
+  `hideA` tinyint(1) NOT NULL,
+  `hideB` tinyint(1) NOT NULL,
+  KEY `uuidA` (`uuidA`),
+  KEY `uuidB` (`uuidB`),
+  KEY `mcode` (`mcode`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 테이블의 덤프 데이터 `maum`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- 테이블 구조 `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `uuid` varchar(64) NOT NULL,
+  `phoneNum` varchar(16) NOT NULL,
+  `appKey` varchar(128) NOT NULL,
+  `name` varchar(16) NOT NULL,
+  `imageTs` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message` varchar(64) NOT NULL,
+  `lon` float NOT NULL,
+  `lat` float NOT NULL,
+  `maxMaum` int(11) NOT NULL,
+  `cntMaum` int(11) NOT NULL,
+  `itm1` int(11) NOT NULL,
+  `itm2` int(11) NOT NULL,
+  `itm3` int(11) NOT NULL,
+  PRIMARY KEY (`uuid`),
+  UNIQUE KEY `phoneNum` (`phoneNum`),
+  KEY `lon` (`lon`),
+  KEY `lat` (`lat`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 테이블의 덤프 데이터 `user`
+--
+
+INSERT INTO `user` (`uuid`, `phoneNum`, `appKey`, `name`, `imageTs`, `message`, `lon`, `lat`, `maxMaum`, `cntMaum`, `itm1`, `itm2`, `itm3`) VALUES
+('asdlkfj', '1234', 'b38b9dbb983b3dfd37a8e23561dc5b9a71aaa645', '', '2012-05-16 16:01:01', '', 0, 0, 3, 0, 0, 0, 0),
+('lsdkfjsldfg', '5678', 'a6s5df8s7df6', '꺼졍', '2012-05-16 15:15:41', '', 0, 0, 3, 0, 0, 0, 0),
+('zzlkfj', '1324234234234', 'fd8e6b8fef0dcf8449d26e8d34c62ebe6b34b749', '', '2012-05-16 16:14:29', '', 4, 234, 3, 0, 0, 0, 0);
