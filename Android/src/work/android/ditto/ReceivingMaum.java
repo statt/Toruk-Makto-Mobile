@@ -3,11 +3,11 @@ package work.android.ditto;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class DittoAndroidActivity extends Activity {
-    /** Called when the activity is first created. */
+public class ReceivingMaum extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.receivingmaum);
+        
     }
 }
