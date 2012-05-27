@@ -16,8 +16,27 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                
             </intent-filter>
+            
         </activity>
+        <activity
+            android:name=".Config"
+            android:label="@string/app_name" >            
+        </activity>
+        <activity
+            android:name=".FriendList"
+            android:label="@string/app_name" >            
+        </activity>
+        <activity
+            android:name=".ReceivingMaum"
+            android:label="@string/app_name" >            
+        </activity>
+        <activity
+            android:name=".SendingMaum"
+            android:label="@string/app_name" >            
+        </activity>
+        
     </application>
 
 </manifest>
