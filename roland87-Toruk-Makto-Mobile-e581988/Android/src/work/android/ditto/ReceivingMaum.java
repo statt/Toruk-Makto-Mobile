@@ -13,7 +13,7 @@ public class ReceivingMaum extends Activity{
         setContentView(R.layout.receivingmaum);
         arItem = new ArrayList<MaumItem>();
         MaumItem maumItem;
-        maumItem = new MaumItem(R.drawable.ic_launcher, "최윤섭", "안녕?");	 arItem.add(maumItem);
+        maumItem = new MaumItem(R.drawable.ic_launcher, "최윤섭", "즐기고싶다.");	 arItem.add(maumItem);
 
         MaumAdapter maumAdapter = new MaumAdapter(this, R.layout.maum_row, arItem);
         ListView MaumList;

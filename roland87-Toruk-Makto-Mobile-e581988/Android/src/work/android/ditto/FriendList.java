@@ -3,7 +3,9 @@ package work.android.ditto;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.MenuItem;
@@ -61,7 +64,16 @@ public class FriendList extends Activity{
     		startActivity(intent2);
 	    	return true;
 	    	case 3:
-	    	Toast.makeText(this,"친구한테 한번 홍보해봅시다.",Toast.LENGTH_SHORT).show();
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    	builder.setTitle("Promotion");
+	    	builder.setMessage("홍보해 임마");
+	    	builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
+	    		public void onClick(DialogInterface dialog, int which) {
+	    		}
+	    		
+	    		
+	    	});
+	    	builder.show();
 	    	return true;
     	}
     	return false;
@@ -126,7 +138,6 @@ class FListAdapter extends BaseAdapter{
 
 		return convertView;
 	}
-
 	
 	
 }

@@ -43,11 +43,12 @@ public final class R {
         public static final int maum_row_image=0x7f060011;
         public static final int maum_row_maum=0x7f060013;
         public static final int maum_row_name=0x7f060012;
-        public static final int rcvmaumlist=0x7f060015;
-        public static final int sndmaumlist=0x7f060016;
+        public static final int rcvmaumlist=0x7f060016;
+        public static final int sndmaumlist=0x7f060017;
         public static final int tab1=0x7f06000d;
         public static final int tab2=0x7f06000e;
         public static final int tab3=0x7f06000f;
+        public static final int webPopup=0x7f060015;
     }
     public static final class layout {
         public static final int around_row=0x7f030000;
@@ -61,8 +62,9 @@ public final class R {
         public static final int maindp=0x7f030008;
         public static final int maum_row=0x7f030009;
         public static final int myfrofile=0x7f03000a;
-        public static final int receivingmaum=0x7f03000b;
-        public static final int sendingmaum=0x7f03000c;
+        public static final int promotion=0x7f03000b;
+        public static final int receivingmaum=0x7f03000c;
+        public static final int sendingmaum=0x7f03000d;
     }
     public static final class string {
         public static final int anyoung=0x7f050003;

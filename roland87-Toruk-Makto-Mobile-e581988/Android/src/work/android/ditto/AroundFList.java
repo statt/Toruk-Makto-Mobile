@@ -2,9 +2,14 @@ package work.android.ditto;
 
 import java.util.ArrayList;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,6 +43,20 @@ public class AroundFList extends Activity{
         ListView FriendList;
         FriendList =(ListView) findViewById(R.id.flist);
         FriendList.setAdapter(fListAdapter);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	super.onCreateOptionsMenu(menu);
+    	MenuItem item=menu.add(0,1,0,"새로고침");
+    	return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+	    	case 1:
+    		Intent intent = new Intent(AroundFList.this, AroundFList.class);
+    		startActivity(intent);
+	    	return true;
+    	}
+    	return false;
     }
 }
 
